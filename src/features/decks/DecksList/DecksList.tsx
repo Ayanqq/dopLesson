@@ -2,13 +2,13 @@ import s from './DecksList.module.css'
 import { useEffect } from 'react'
 import { decksApi } from '../decks-api.ts'
 import { useDispatch, useSelector } from 'react-redux'
-import { AppRootState } from '../../../app/store.ts'
+import {AppRootState, useAppSelector} from '../../../app/store.ts'
 import { setDecksAC } from '../decks-reducer.ts'
 
 
 export const DecksList = () => {
 
-  const decks = useSelector<AppRootState>(state => state.decksReducer)
+  const decks = useAppSelector(state => state.decksReducer.decks)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -19,7 +19,9 @@ export const DecksList = () => {
   }, [dispatch])
 
   return <ul className={s.list}>
-    {decks}
+    {decks?.map(el => <li>
+      {el.id}
+    </li>)}
   </ul>
 }
 
