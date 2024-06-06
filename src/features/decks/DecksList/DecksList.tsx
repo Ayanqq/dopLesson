@@ -1,15 +1,15 @@
 import s from './DecksList.module.css'
 import { useEffect } from 'react'
 import { decksApi } from '../decks-api.ts'
-import { useDispatch, useSelector } from 'react-redux'
-import {AppRootState, useAppSelector} from '../../../app/store.ts'
+import { useAppDispatch, useAppSelector } from '../../../app/store.ts'
 import { setDecksAC } from '../decks-reducer.ts'
+import { DeckItem } from './DeckItem/DeckItem.tsx'
 
 
 export const DecksList = () => {
 
   const decks = useAppSelector(state => state.decksReducer.decks)
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     decksApi.getDecks()
@@ -18,10 +18,11 @@ export const DecksList = () => {
       })
   }, [dispatch])
 
+
   return <ul className={s.list}>
-    {decks?.map(el => <li>
-      {el.id}
-    </li>)}
+    {decks?.map((deck) => (
+      <DeckItem deck={deck}/>
+    ))}
   </ul>
 }
 
