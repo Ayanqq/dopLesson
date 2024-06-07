@@ -37,4 +37,7 @@ export const decksApi = {
   getDecks: () => {
     return instance.get<GetDecksType>('/v2/decks')
   },
+  postDecks: () => {
+    return instance.post('/v1/decks')
+  }
 }
