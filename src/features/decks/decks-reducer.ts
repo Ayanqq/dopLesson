@@ -16,8 +16,8 @@ export const decksReducer = (state: DecksState = initialState, action: DecksActi
       return { ...state, decks: action.decks }
     }
     case 'ADD-DECK': {
-      const newDeck = {...state.decks, name:action.title }
-      return state
+      const newDeck = {...state.decks, name:action.title}
+      return {...state, decks:[...state.decks, newDeck]}
       // todo:не работает типизация...............
     }
     default:
