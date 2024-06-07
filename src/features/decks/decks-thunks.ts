@@ -11,9 +11,11 @@ export const fetchDecksTC = () => async (dispatch: AppDispatch) => {
   }
 }
 
-// export const postDecksTC = () => async (dispatch:AppDispatch) => {
-//   try {
-//     const res = await decksApi.postDecks()
-//     dispatch(addDeckAC(res))
-//   }
-// }
+export const postDecksTC = (title:string) => async (dispatch:AppDispatch) => {
+  try {
+    const res = await decksApi.postDecks()
+    dispatch(addDeckAC(title))
+  } catch (e) {
+    console.log(e)
+  }
+}
