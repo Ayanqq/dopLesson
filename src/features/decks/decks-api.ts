@@ -37,7 +37,7 @@ export const decksApi = {
   getDecks: () => {
     return instance.get<GetDecksType>('/v2/decks')
   },
-  postDecks: (title:string) => {
-    return instance.post('/v1/decks') // todo:в документации не написано как добавлять title - просто пустым оставить ?
+  postDecks: (name:string) => {
+    return instance.post('/v1/decks',{name}) // todo:в документации не написано как добавлять title - просто пустым оставить ?
   }
 }

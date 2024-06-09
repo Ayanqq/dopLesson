@@ -11,7 +11,7 @@ export const DecksList = () => {
 
   const decks = useAppSelector(state => state.decksReducer.decks)
   const dispatch = useAppDispatch()
-
+  console.log(decks)
   useEffect(() => {
     dispatch(fetchDecksTC())
   }, [])
@@ -19,7 +19,7 @@ export const DecksList = () => {
 
   return <ul className={s.list}>
     {decks?.map((deck) => (
-      <DeckItem deck={deck} />
+      <DeckItem deck={deck} key={deck.id}/>
     ))}
   </ul>
 }

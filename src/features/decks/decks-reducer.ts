@@ -16,9 +16,10 @@ export const decksReducer = (state: DecksState = initialState, action: DecksActi
       return { ...state, decks: action.decks }
     }
     case 'ADD-DECK': {
-      const newDeck = {...state.decks, name:action.title}
-      return {...state, decks:[...state.decks, newDeck]}
+      // const newDeck = { name:action.title}
+      return {...state, decks:[ action.deck,...state.decks,]}
       // todo:не работает типизация...............
+      // в payload будет приходить action
     }
     default:
       return state
@@ -37,10 +38,11 @@ export const setDecksAC = (decks: GetDecksItemType[]) => {
   } as const
 }
 
-export const addDeckAC = (title: string) => {
+export const addDeckAC = (title: string, deck:GetDecksItemType) => {
   return {
     type: 'ADD-DECK',
     title,
+    deck,
   } as const
 }
 
